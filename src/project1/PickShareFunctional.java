@@ -1,6 +1,5 @@
 package project1;
 
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class PickShareFunctional {
@@ -10,9 +9,7 @@ public class PickShareFunctional {
                 .map(ShareUtil::getPrice)
                 .filter(shareInfo -> ShareUtil.isPriceLessThan(highestPrice).test(shareInfo))
                 .reduce(ShareUtil::pickHigh)
-                .get();
-//                .filter(shareInfo -> ((ShareInfo) shareInfo).price.compareTo(highestPrice) < 0)
-//                .max(Comparator.comparing(s -> s.price)).get();
+                .orElse(null);
     }
 
     public static void main(String[] args) {
