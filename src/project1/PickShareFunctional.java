@@ -13,11 +13,17 @@ public class PickShareFunctional {
     }
 
     public static void main(String[] args) {
-        // 1637 ms
-        long startTime = System.currentTimeMillis();
-        System.out.println("highest under 500: " + findHighPrices(Shares.symbols.stream()));
-        long timeElapsed = System.currentTimeMillis() - startTime;
-        System.out.println("time elapsed: " + timeElapsed);
+        // printing every share price
+        for(String symbol : Shares.symbols) {
+            ShareInfo shareInfo = ShareUtil.getPrice(symbol);
+            System.out.println(shareInfo.toString());
+        }
+
+//        // 1637 ms
+//        long startTime = System.currentTimeMillis();
+//        System.out.println("highest under 500: " + findHighPrices(Shares.symbols.stream()));
+//        long timeElapsed = System.currentTimeMillis() - startTime;
+//        System.out.println("time elapsed: " + timeElapsed);
 
 //        // 1207 ms
 //        long startTime = System.currentTimeMillis();
