@@ -12,23 +12,26 @@ public class PickShareFunctional {
                 .orElse(null);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // printing every share price
-        for(String symbol : Shares.symbols) {
-            ShareInfo shareInfo = ShareUtil.getPrice(symbol);
-            System.out.println(shareInfo.toString());
-        }
+//        for(String symbol : Shares.symbols) {
+//            ShareInfo shareInfo = ShareUtil.getPrice(symbol);
+//            System.out.println(shareInfo.toString());
+//        }
 
-//        // 1637 ms
-//        long startTime = System.currentTimeMillis();
-//        System.out.println("highest under 500: " + findHighPrices(Shares.symbols.stream()));
-//        long timeElapsed = System.currentTimeMillis() - startTime;
-//        System.out.println("time elapsed: " + timeElapsed);
+        // 1637 ms 12657 ms
+        long startTime = System.currentTimeMillis();
+        System.out.println("highest under 500: " + findHighPrices(Shares.symbols.stream()));
+        long timeElapsed = System.currentTimeMillis() - startTime;
+        System.out.println("time elapsed stream: " + timeElapsed);
 
-//        // 1207 ms
-//        long startTime = System.currentTimeMillis();
+        // Wait a little over a minute so next attempt starts with fresh rate limit the way previous attempt did
+//        Thread.sleep(60000);
+
+        // 1207 ms  11250 ms
+//        startTime = System.currentTimeMillis();
 //        System.out.println("highest under 500: " + findHighPrices(Shares.symbols.parallelStream()));
-//        long timeElapsed = System.currentTimeMillis() - startTime;
-//        System.out.println("time elapsed: " + timeElapsed);
+//        timeElapsed = System.currentTimeMillis() - startTime;
+//        System.out.println("time elapsed parellelStream: " + timeElapsed);
     }
 }
