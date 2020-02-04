@@ -10,7 +10,7 @@ public class ShareUtil {
             return lastAttempt;
         }
         else {
-            // wait 1 to 2 seconds between calls
+            // wait 1 to 3 seconds between calls
             Thread.sleep((new Random().nextInt(3) + 1) * 1000);
 //            Thread.sleep(6000);
             return getPriceRetry(symbol, APIFinance.getPrice(symbol), retries - 1);
